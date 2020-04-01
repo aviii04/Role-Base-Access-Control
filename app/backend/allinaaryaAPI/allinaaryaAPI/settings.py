@@ -121,3 +121,45 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Logging Configuration
+# Create dir 'Logfiles' before executing
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(name)-12s %(levelname)-8s %(message)s'
+        },
+        'file': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+        }
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '../../../../Logfiles/logfiles.log',
+            'formatter': 'file',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'console',
+        }
+    },
+    'loggers': {
+        'django': {
+            'level': 'DEBUG',
+            'handlers': ['file'],
+            'propagate': True,
+        },
+        'firstModule': {
+            'level': 'DEBUG',
+            'handlers': ['console', 'file'],
+            'propagate': True,
+        },
+    },
+}
