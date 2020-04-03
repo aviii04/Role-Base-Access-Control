@@ -98,8 +98,12 @@ WSGI_APPLICATION = 'allinaaryaAPI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'allinaarya_planner',
+        'USER': 'root',
+        'PASSWORD': 'htctouch',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
