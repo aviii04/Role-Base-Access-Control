@@ -40,7 +40,10 @@ INSTALLED_APPS = [
 
     # Third-party integration
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    
+    # AllinaaryaApps
+    'apps.authentication.authenticate'
 ]
 
 MIDDLEWARE = [
@@ -71,6 +74,8 @@ JWT_AUTH = {
     # 'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
     # 'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28),
 }
+
+AUTH_USER_MODEL = 'authenticate.User'
 
 ROOT_URLCONF = 'allinaaryaAPI.urls'
 
@@ -106,7 +111,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
