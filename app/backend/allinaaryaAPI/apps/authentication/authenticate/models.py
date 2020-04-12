@@ -18,3 +18,48 @@ class User(AbstractUser):
 
     class Meta:
         db_table = "user"
+
+
+class Role(models.Model):
+    role_id = models.CharField(primary_key=True, max_length=50)
+    role = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'role'
+
+
+class UserRole(models.Model):
+    user = models.ForeignKey(User, models.DO_NOTHING)
+    role = models.ForeignKey(Role, models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'user_role'
+
+
+class Feature(models.Model):
+    feature_id = models.AutoField(primary_key=True)
+    feature = models.CharField(max_length=45)
+    feature_description = models.CharField(max_length=150)
+
+    class Meta:
+        db_table = 'feature'
+
+
+class PartnerFeature(models.Model):
+    partner = models.ForeignKey(User, models.DO_NOTHING)
+    feature = models.ForeignKey(Feature, models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'partner_feature'
+
+
+class FeatureRolePrivilege(models.Model):
+    feature = models.ForeignKey(Feature, models.DO_NOTHING)
+    role = models.ForeignKey(Role, models.DO_NOTHING)
+    privilege = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'feature_role_privilege'
+
+
+
