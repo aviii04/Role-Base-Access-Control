@@ -184,7 +184,7 @@ LOGGING = {
             'handlers': ['file'],
             'propagate': True,
         },
-        'firstModule': {
+        'apps.authentication.authenticate': {
             'level': 'DEBUG',
             'handlers': ['console', 'file'],
             'propagate': True,

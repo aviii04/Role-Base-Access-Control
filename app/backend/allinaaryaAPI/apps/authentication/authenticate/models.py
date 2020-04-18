@@ -20,6 +20,15 @@ class User(AbstractUser):
         db_table = "user"
 
 
+class UserDetails(models.Model):
+    user = models.ForeignKey(User, models.DO_NOTHING, related_name='user_detail')
+    partner = models.ForeignKey(User, models.DO_NOTHING, blank=True, null=True, related_name='user_partner')
+    phone_no = models.CharField(max_length=15, blank=True, null=True)
+
+    class Meta:
+        db_table = 'user_details'
+
+
 class Role(models.Model):
     role_id = models.CharField(primary_key=True, max_length=50)
     role = models.CharField(max_length=50)
